@@ -1,6 +1,6 @@
 {
   "name": "bnb-exchange-rate",
-  "version": "1.3.4",
+  "version": "1.3.5",
   "description": "Official Bulgarian National Bank (Bulgaria) daily exchange rates — 29 currencies vs EUR, history since 2016. Zero-dependency Node.js/TypeScript client.",
   "keywords": [
     "bnb",
