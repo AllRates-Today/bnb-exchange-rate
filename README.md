@@ -85,10 +85,10 @@ const pair = await getRate('EUR', 'USD', { apiKey: 'art_live_...' });
 {
   bank: 'bnb',
   name: 'Bulgarian National Bank',
-  rate_date: '2026-10-06',   // Bulgarian National Bank's own publication date
+  rate_date: '2026-10-08',   // Bulgarian National Bank's own publication date
   source: 'EUR',
   target: 'USD',
-  rate: 1.1269,
+  rate: 1.1186,
   rate_type: 'reference',
   derived: false,
   method: 'published',
@@ -113,9 +113,9 @@ console.log(table.rate_date, table.rates.length);
 {
   bank: 'bnb',
   name: 'Bulgarian National Bank',
-  rate_date: '2026-10-06',
+  rate_date: '2026-10-08',
   rates: [
-    { "base": "EUR", "quote": "USD", "type": "reference", "value": 1.1269 },
+    { "base": "EUR", "quote": "USD", "type": "reference", "value": 1.1186 },
     // … the rest of the published table (29 currencies vs EUR)
   ],
   disclaimer: '…'
@@ -155,7 +155,7 @@ Paid plans. One resolved rate per publication date — ready for charting, reval
 import { getHistory } from 'bnb-exchange-rate';
 
 const series = await getHistory(
-  { source: 'EUR', target: 'USD', from: '2026-01-01', to: '2026-10-06' },
+  { source: 'EUR', target: 'USD', from: '2026-01-01', to: '2026-10-08' },
   { apiKey: 'art_live_...' }
 );
 ```
@@ -168,11 +168,11 @@ const series = await getHistory(
   source: 'EUR',
   target: 'USD',
   from: '2026-01-01',
-  to: '2026-10-06',
+  to: '2026-10-08',
   count: 152,
   rates: [
     // one entry per publication date
-    { date: '2026-10-06', rate: 1.1269, rate_type: 'reference', derived: false, method: 'published' },
+    { date: '2026-10-08', rate: 1.1186, rate_type: 'reference', derived: false, method: 'published' },
     // …
   ],
   disclaimer: '…'
@@ -221,6 +221,7 @@ curl "https://allratestoday.com/api/v1/central-bank/bnb/latest?format=xml&api_ke
 
 - MCP server: `npx -y @allratestoday/central-bank-mcp` (stdio) or the hosted endpoint `https://allratestoday.com/api/mcp` — tools for official rates, history, cross-bank comparison and publication calendars
 - Already using the general SDK or MCP server? Since 2026-10-01 [`@allratestoday/sdk`](https://www.npmjs.com/package/@allratestoday/sdk) 1.4+ has `officialRates('bnb')` and [`@allratestoday/mcp-server`](https://www.npmjs.com/package/@allratestoday/mcp-server) 0.6+ has a `get_official_rates` tool — both return this source's latest table with no key, so you can add it without a second dependency
+- Claude Code plugin (no key): `/plugin marketplace add AllRates-Today/claude-code-plugin` then `/plugin install allratestoday@allratestoday` — bundles both MCP servers plus an `/official-rate bnb ...` command
 - Machine-readable site guide: [llms.txt](https://allratestoday.com/llms.txt) · [for-ai-agents](https://allratestoday.com/for-ai-agents/)
 
 ## ⚖️ Published vs derived rates
